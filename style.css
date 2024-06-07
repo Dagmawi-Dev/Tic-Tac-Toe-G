@@ -216,5 +216,37 @@ body {
 
 
 
+@media only screen and (max-width: 1024px) {
+    .game-grid {
+        margin-top: 20px;
+        grid-gap: 10px;
+    }
+
+    .game-cell {
+        height: 80px;
+        width: 80px;
+    }
+
+    .x::after, .o::after {
+        font-size: 60px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .game-cell {
+        height: 60px;
+        width: 60px;
+    }
+
+    .x::after, .o::after {
+        font-size: 50px;
+    }
+}
+
 
 

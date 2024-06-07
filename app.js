@@ -50,3 +50,37 @@ function handleWin(letter, winningCombination) {
   playAgainDiv.style.display = 'block';
 }
 
+//function that checks the status of the game
+function checkGameStatus() {
+  const cells = [];
+  for (let i = 0; i < cellDivs.length; i++) {
+    cells.push(cellDivs[i].classList[1]);
+  }
+
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const combination = winningCombinations[i];
+    const [a, b, c] = combination;
+    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+      handleWin(cells[a], combination);
+      return;
+    }
+  } 
+
+  let isTie = true;
+  for (let i = 0; i < cells.length; i++) {
+    if (!cells[i]) {
+      isTie = false;
+      break;
+    }
+  }
+
+  if (isTie) {
+    gameIsLive = false;
+    statusDiv.innerHTML = `<strong>Game is tied!</strong>`;
+    playAgainDiv.style.display = 'block';
+  } else {
+    xIsNext = !xIsNext;
+    statusDiv.innerHTML = xIsNext ? `${playerXName} (${xSymbol}) is next` : `${playerOName} (${oSymbol}) is next`;
+  }
+}
+
