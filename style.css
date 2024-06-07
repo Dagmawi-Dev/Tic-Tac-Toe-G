@@ -65,3 +65,156 @@ body {
 .reset:hover, .play-again:hover {
     background: #2a5298;
 }
+.game-grid {
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 15px;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.game-cell {
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    transition: transform 0.2s ease-in-out, background 0.3s ease;
+}
+
+
+.game-cell:hover {
+    transform: scale(1.05);
+    background: #cccccc;
+}
+.x, .o {
+    cursor: default;
+}
+
+
+.x::after, .o::after {
+    font-size: 80px;
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.x::after {
+    content: '×';
+    color: #1e3c72;
+}
+
+
+.o::after {
+    content: '○';
+    color: #2a5298;
+}
+
+
+.game-cell.x::after, .game-cell.o::after {
+    transform: scale(1);
+}
+
+
+.won::after {
+    color: green;
+    animation: pulse 1s infinite;
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.symbol-choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.symbol-choice input[type="radio"] {
+    margin: 0 10px;
+}
+
+
+.symbol-choice label {
+    margin: 0 10px;
+}
+
+
+.name-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.name-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+
+.name-container h2 {
+    margin-bottom: 20px;
+}
+
+
+.name-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+.name-container div {
+    margin-bottom: 10px;
+}
+
+
+.name-container button {
+    cursor: pointer;
+    background: #1e3c72;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 15px;
+    transition: background 0.3s ease;
+}
+
+
+.name-container button:hover {
+    background: #2a5298;
+}
+
+
+
+
+
