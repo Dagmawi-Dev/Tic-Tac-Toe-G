@@ -84,3 +84,36 @@ function checkGameStatus() {
   }
 }
 
+//Resets the game state to the initial setup.
+function handleReset() {
+  for (let i = 0; i < cellDivs.length; i++) {
+    cellDivs[i].classList.remove('x', 'o', 'won');
+  }
+  xIsNext = true;
+  gameIsLive = true;
+  statusDiv.innerHTML = `${playerXName} (${xSymbol}) is next`;
+  playAgainDiv.style.display = 'block'; 
+}
+
+//Handles a click event on a game cell.
+function handleCellClick(e) {
+  if (!gameIsLive) return;
+
+  const classList = e.target.classList;
+  if (classList.contains('x') || classList.contains('o')) return;
+
+  if (xIsNext) {
+    classList.add('x');
+  } else {
+    classList.add('o');
+  }
+  checkGameStatus();
+}
+
+//Handles the action of playing the game again.
+function handlePlayAgain() {
+  nameOverlay.style.display = 'flex';
+  playAgainDiv.style.display = 'none';
+  handleReset();
+}
+
