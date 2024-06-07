@@ -65,3 +65,32 @@ body {
 .reset:hover, .play-again:hover {
     background: #2a5298;
 }
+.game-grid {
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 15px;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.game-cell {
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    transition: transform 0.2s ease-in-out, background 0.3s ease;
+}
+
+
+.game-cell:hover {
+    transform: scale(1.05);
+    background: #cccccc;
+}
