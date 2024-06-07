@@ -1,4 +1,4 @@
-const statusDiv = document.querySelector('.status');
+let statusDiv = document.querySelector('.status');
 const resetDiv = document.querySelector('.reset');
 const playAgainDiv = document.querySelector('.play-again');
 const cellDivs = document.querySelectorAll('.game-cell');
