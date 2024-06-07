@@ -110,4 +110,10 @@ function handleCellClick(e) {
   checkGameStatus();
 }
 
+//Handles the action of playing the game again.
+function handlePlayAgain() {
+  nameOverlay.style.display = 'flex';
+  playAgainDiv.style.display = 'none';
+  handleReset();
+}
 
