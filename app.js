@@ -50,6 +50,95 @@ function handleWin(letter, winningCombination) {
   playAgainDiv.style.display = 'block';
 }
 
+//function that checks the status of the game
+function checkGameStatus() {
+  const cells = [];
+  for (let i = 0; i < cellDivs.length; i++) {
+    cells.push(cellDivs[i].classList[1]);
+  }
+
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const combination = winningCombinations[i];
+    const [a, b, c] = combination;
+    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+      handleWin(cells[a], combination);
+      return;
+    }
+  } 
+
+  let isTie = true;
+  for (let i = 0; i < cells.length; i++) {
+    if (!cells[i]) {
+      isTie = false;
+      break;
+    }
+  }
+
+  if (isTie) {
+    gameIsLive = false;
+    statusDiv.innerHTML = `<strong>Game is tied!</strong>`;
+    playAgainDiv.style.display = 'block';
+  } else {
+    xIsNext = !xIsNext;
+    statusDiv.innerHTML = xIsNext ? `${playerXName} (${xSymbol}) is next` : `${playerOName} (${oSymbol}) is next`;
+  }
+}
+
+//Resets the game state to the initial setup.
+function handleReset() {
+  for (let i = 0; i < cellDivs.length; i++) {
+    cellDivs[i].classList.remove('x', 'o', 'won');
+  }
+  xIsNext = true;
+  gameIsLive = true;
+  statusDiv.innerHTML = `${playerXName} (${xSymbol}) is next`;
+  playAgainDiv.style.display = 'block'; 
+}
+
+//Handles a click event on a game cell.
+function handleCellClick(e) {
+  if (!gameIsLive) return;
+
+  const classList = e.target.classList;
+  if (classList.contains('x') || classList.contains('o')) return;
+
+  if (xIsNext) {
+    classList.add('x');
+  } else {
+    classList.add('o');
+  }
+  checkGameStatus();
+}
+
+//Starts the game with the selected player names and symbols.
+function startGame() {
+    const player1Symbol = player1XRadio.checked ? 'x' : 'o';
+    const player2Symbol = player2XRadio.checked ? 'x' : 'o';
+  
+  
+    if (player1Symbol === player2Symbol) {
+      alert("Players must choose different symbols!");
+      return;
+    }
+  
+  
+    playerXName = player1Symbol === 'x' ? player1NameInput.value || 'Player 1' : player2NameInput.value || 'Player 2';
+    playerOName = player1Symbol === 'o' ? player1NameInput.value || 'Player 1' : player2NameInput.value || 'Player 2';
+  
+  
+    statusDiv.innerHTML = `${playerXName} (${xSymbol}) is next`;
+    nameOverlay.style.display = 'none';
+    playAgainDiv.style.display = 'none';
+  }
+  
+
+//Handles the action of playing the game again.
+function handlePlayAgain() {
+  nameOverlay.style.display = 'flex';
+  playAgainDiv.style.display = 'none';
+  handleReset();
+}
+
 // Event Listeners
 resetDiv.addEventListener('click', handleReset);
 for (let i = 0; i < cellDivs.length; i++) {
@@ -61,3 +150,4 @@ playAgainDiv.addEventListener('click', handlePlayAgain);
 
 // Display the name overlay initially
 nameOverlay.style.display = 'flex';
+
