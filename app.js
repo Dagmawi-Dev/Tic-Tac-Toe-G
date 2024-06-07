@@ -139,3 +139,15 @@ function handlePlayAgain() {
   handleReset();
 }
 
+// Event Listeners
+resetDiv.addEventListener('click', handleReset);
+for (let i = 0; i < cellDivs.length; i++) {
+    cellDivs[i].addEventListener('click', handleCellClick);
+}
+startGameButton.addEventListener('click', startGame);
+playAgainDiv.addEventListener('click', handlePlayAgain);
+
+
+// Display the name overlay initially
+nameOverlay.style.display = 'flex';
+
