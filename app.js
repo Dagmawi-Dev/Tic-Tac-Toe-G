@@ -84,3 +84,14 @@ function checkGameStatus() {
   }
 }
 
+//Resets the game state to the initial setup.
+function handleReset() {
+  for (let i = 0; i < cellDivs.length; i++) {
+    cellDivs[i].classList.remove('x', 'o', 'won');
+  }
+  xIsNext = true;
+  gameIsLive = true;
+  statusDiv.innerHTML = `${playerXName} (${xSymbol}) is next`;
+  playAgainDiv.style.display = 'block'; 
+}
+
