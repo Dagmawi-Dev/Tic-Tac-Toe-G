@@ -110,6 +110,28 @@ function handleCellClick(e) {
   checkGameStatus();
 }
 
+//Starts the game with the selected player names and symbols.
+function startGame() {
+    const player1Symbol = player1XRadio.checked ? 'x' : 'o';
+    const player2Symbol = player2XRadio.checked ? 'x' : 'o';
+  
+  
+    if (player1Symbol === player2Symbol) {
+      alert("Players must choose different symbols!");
+      return;
+    }
+  
+  
+    playerXName = player1Symbol === 'x' ? player1NameInput.value || 'Player 1' : player2NameInput.value || 'Player 2';
+    playerOName = player1Symbol === 'o' ? player1NameInput.value || 'Player 1' : player2NameInput.value || 'Player 2';
+  
+  
+    statusDiv.innerHTML = `${playerXName} (${xSymbol}) is next`;
+    nameOverlay.style.display = 'none';
+    playAgainDiv.style.display = 'none';
+  }
+  
+
 //Handles the action of playing the game again.
 function handlePlayAgain() {
   nameOverlay.style.display = 'flex';
