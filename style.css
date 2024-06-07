@@ -23,3 +23,45 @@ body {
 .container:hover {
     transform: scale(1.03);
 }
+
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1e3c72;
+}
+
+
+.title span {
+    color: #2a5298;
+}
+
+
+.status-action {
+    display: flex;
+    margin-top: 20px;
+    font-size: 1.2em;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.status span {
+    color: #2a5298;
+}
+
+
+.reset, .play-again {
+    cursor: pointer;
+    background: #1e3c72;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 15px;
+    transition: background 0.3s ease;
+}
+
+
+.reset:hover, .play-again:hover {
+    background: #2a5298;
+}
