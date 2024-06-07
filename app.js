@@ -38,3 +38,15 @@ let playerOName = '';
 function letterToSymbol(letter) {
   return letter === 'x' ? xSymbol : oSymbol;
 }
+
+//function for handling Win
+function handleWin(letter, winningCombination) {
+  gameIsLive = false;
+  const winner = letter === 'x' ? playerXName : playerOName;
+  statusDiv.innerHTML = `<strong>${winner} (${letterToSymbol(letter)}) has won!</strong>`;
+  for (let i = 0; i < winningCombination.length; i++) {
+    cellDivs[winningCombination[i]].classList.add('won');
+  }
+  playAgainDiv.style.display = 'block';
+}
+
