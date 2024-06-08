@@ -246,6 +246,9 @@ body {
     .x::after, .o::after {
         font-size: 50px;
     }
+    .reset{
+        padding:5px 8px;
+    }
 }
 
 
